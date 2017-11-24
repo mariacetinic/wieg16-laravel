@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdressTable extends Migration
+class CreateAddressTable extends Migration
 {
     /**
      * Run the migrations.
@@ -20,22 +20,21 @@ class CreateAdressTable extends Migration
     public function up()
     {
         Schema::create('address', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('customer_id');
-            $table->string('customer_address_id');
-            $table->string('email');
-            $table->string('firstname');
-            $table->string('lastname');
-            $table->string('postcode');
-            $table->string('street');
-            $table->string('city');
-            $table->string('telephone');
-            $table->string('country_id');
-            $table->string('address_type');
-            $table->string('company');
-            $table->string('country');
+            $table->bigInteger('id', false, true)->primary();
+            $table->bigInteger('customer_id', false, true);
+            $table->string('customer_address_id')->nullable();
+            $table->string('email')->nullable();
+            $table->string('firstname')->nullable();
+            $table->string('lastname')->nullable();
+            $table->string('postcode')->nullable();
+            $table->string('street')->nullable();
+            $table->string('city')->nullable();
+            $table->string('telephone')->nullable();
+            $table->string('country_id')->nullable();
+            $table->string('address_type')->nullable();
+            $table->string('company')->nullable();
+            $table->string('country')->nullable();
             $table->timestamps();
-
         });
     }
 

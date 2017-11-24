@@ -36,28 +36,28 @@ class CreateCustomerTable extends Migration
     public function up()
     {
         Schema::create('customer', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('email');
-            $table->string('firstname');
-            $table->string('lastname');
-            $table->string('gender');
-            $table->string('customer_activated');
-            $table->string('group_id');
-            $table->string('customer_company');
-            $table->string('default_billing');
-            $table->string('default_shipping');
-            $table->string('is_active');
-            $table->string('	created_at');
-            $table->string('	updated_at');
-            $table->string('customer_invoice_email');
-            $table->string('customer_extra_text');
-            $table->string('customer_due_date_period');
-            $table->timestamps();
+            $table->bigInteger('id', false, true)->primary();
 
+            $table->string('email')->nullable();
+            $table->string('firstname')->nullable();
+            $table->string('lastname')->nullable();
+            $table->tinyInteger('gender')->nullable();
+            $table->string('customer_activated')->nullable();
+            $table->tinyInteger('group_id')->nullable();
+            $table->string('customer_company')->nullable();
+            $table->string('default_billing')->nullable();
+            $table->string('default_shipping')->nullable();
+            $table->string('is_active')->nullable();
+            $table->string('customer_invoice_email')->nullable();
+            $table->string('customer_extra_text')->nullable();
+            $table->string('customer_due_date_period')->nullable();
+
+            $table->timestamps();
         });
     }
 
-
+//kolla så det funkar:
+//
 
     /**
      * Reverse the migrations.
