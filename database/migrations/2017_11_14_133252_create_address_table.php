@@ -19,7 +19,7 @@ class CreateAddressTable extends Migration
      */
     public function up()
     {
-        Schema::create('address', function (Blueprint $table) {
+        Schema::create('customer_addresses', function (Blueprint $table) {
             $table->bigInteger('id', false, true)->primary();
             $table->bigInteger('customer_id', false, true);
             $table->string('customer_address_id')->nullable();

@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Customer;
 //use App\CustomerAdress;
+use App\CustomerAddress;
 use Illuminate\Console\Command;
 
 class ImportCustomers extends Command
@@ -59,12 +60,18 @@ class ImportCustomers extends Command
 
         foreach($result as $customer) {
             //Kolla om modellen redan finns via Customer::find($id). Om modellen inte finns så blir det null
+            $this->info("Importing customer: ".$customer['id']);
             $dbCustomer = Customer::findOrNew($customer['id']);
             //Spara med $customer->save()
             $dbCustomer->fill($customer)->save();
+
+            if (isset($customer['address']) && is_array($customer['address'])) {
+                $this->info("Importing or updating addresses" . $customer['address']['id']);
+                $address = CustomerAddress::findOrNew($customer['address']['id']);
+                $address->fill($customer['address'])->save();
+            }
+
+
         }
-
     }
-
-
 }
