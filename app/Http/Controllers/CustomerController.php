@@ -16,6 +16,8 @@ class CustomerController extends Controller
     {
         $customer = Customer::find($id);
 
+
+        //uppgift 4
         if ($customer != null) {
             return response()->json($customer);
         } else {
