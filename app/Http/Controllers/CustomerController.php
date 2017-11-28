@@ -11,4 +11,16 @@ class CustomerController extends Controller
         return response()->json(Customer::all());
         //header('Content-Type: application/json');
     }
+
+    public function showCustomersId($id)
+    {
+        $customer = Customer::find($id);
+
+        if ($customer != null) {
+            return response()->json($customer);
+        } else {
+            return response()->json(["message" => "Customer not found"], 404);
+        }
+
+    }
 }

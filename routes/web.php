@@ -16,3 +16,6 @@ Route::get('/', function () {
 });
 
 Route::get('/customer', 'CustomerController@showCustomer');
+
+//Route to get one customer by ID
+Route::get('customers/{id}', 'CustomerController@showCustomersId');
