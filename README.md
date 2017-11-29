@@ -53,3 +53,26 @@ Utöka din customers.php så att man kan hämta kunder baserat på company_id.
 Om company_id anges så skall alla kunder med detta id visas.
 Exempel på url: http://wieg16-api.dev/customers?company_id=1
 Denna url skall då visa mig alla kunder med company_id 1 i json-format.
+
+
+#Övningar för Lektion 6: Laravel 2
+
+Nya vidder öppnar sig framför oss! Nu är det dags att börja bygga på en applikation på riktigt. Målet är att bygga grunderna i en faktureringsapplikation. Vi kommer såklart göra det steg för steg och eftersom detta är en kurs om 3:e parts system så använder vi även fortsättningsvis extern data. Använd samma databas som du lagrat kunderna i tidigare i ditt Laravelprojekt. Bygg helt enkelt vidare på projektet som du påbörjade i lektion 5.
+
+## Övning 1
+Nya vidder och nya url:er. Vi har upptäckt en ny datakälla här: https://www.milletech.se/invoicing/export/ Vad verkar den innehålla? Titta på datan och försök klura ut vad detta kan vara för något.
+
+## Övning 2
+Gör ett konsollkommando för importen precis som du gjorde för kunderna.
+
+## Övning 3
+Skriv lämpliga migrationer för datan som du skall importera.
+
+## Övning 4
+Gör nya modeller för de nya tabellerna.
+
+##Övning 5
+Försök lista ut vilka relationer dina modeller skall ha och sätt upp dem i kod.
+
+##Övning 6
+Nu när du förhoppningsvis vet vad datan är för något så är det dags att importera den. Skriv själva importkoden i ditt konsollkommando. Du skall bara importera dem som har status="processing".
