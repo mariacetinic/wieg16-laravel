@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Customer;
+use App\Company;
 //use App\CustomerAdress;
 use App\CustomerAddress;
 use Illuminate\Console\Command;
@@ -70,6 +71,18 @@ class ImportCustomers extends Command
                 $address = CustomerAddress::findOrNew($customer['address']['id']);
                 $address->fill($customer['address'])->save();
             }
+
+
+            if ($dbCustomer->customer_company != null) {
+                $company = Company::firstOrNew(['company_name' => $dbCustomer->customer_company]);
+                $company->save();
+
+                // UPDATE customers SET company_id = $company->id WHERE customer_company = $company->company_name
+                \DB::table('customers')
+                    ->where("customer_company", "=", $company->company_name)
+                    ->update(["company_id" => $company->id]);
+            }
+
 
 
         }
