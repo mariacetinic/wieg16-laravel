@@ -1,7 +1,7 @@
 # Övningar för Lektion 5: Laravel
 Repetition är kunskapens moder!
 Ni skall nu göra om övning 3 från lektion 2 i Laravel och sedan även göra om övningarna från lektion 3 (API:er) i Laravel.
-~~ ## Övning 1 ~~
+~~## Övning 1~~
 Hämta data via cURL från https://www.milletech.se/invoicing/export/customers.
 Ta den tabellstruktur som ni gjort tidigare och skriv in den som migrationer i Laravel.
 Det skall finnas en migration för varje tabell.
@@ -22,7 +22,7 @@ Efter att du har gjort färdigt dina migrationer och testat dem så skriver du e
 13. Spara med $customer->save()
 14. Gör samma sak med adresserna!
 
-~~ ## Övning 2 ~~
+~~## Övning 2~~
 Nu är det dags att börja exponera den data som du hämtat hem i Laravel.
 Enligt god REST-sed så skall det finnas en route som heter /customers som motsvarar Customer som resurs och modell.
 Gör en controller som heter CustomersController och en modell för customers-tabellen som heter Customer.
