@@ -55,7 +55,7 @@ Exempel på url: http://wieg16-api.dev/customers?company_id=1
 Denna url skall då visa mig alla kunder med company_id 1 i json-format.
 
 
-#Övningar för Lektion 6: Laravel 2
+# Övningar för Lektion 6: Laravel 2
 
 Nya vidder öppnar sig framför oss! Nu är det dags att börja bygga på en applikation på riktigt. Målet är att bygga grunderna i en faktureringsapplikation. Vi kommer såklart göra det steg för steg och eftersom detta är en kurs om 3:e parts system så använder vi även fortsättningsvis extern data. Använd samma databas som du lagrat kunderna i tidigare i ditt Laravelprojekt. Bygg helt enkelt vidare på projektet som du påbörjade i lektion 5.
 
