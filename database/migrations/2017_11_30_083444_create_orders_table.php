@@ -14,7 +14,8 @@ class CreateOrdersTable extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->increments('increment_id');
+            $table->bigInteger('id', false, true)->primary();
+            $table->string('increment_id')->nullable();
             $table->timestamps(); //lägger till created_at och updated_at
             $table->string('customer_id')->nullable();
             $table->string('customer_email')->nullable();
@@ -29,7 +30,6 @@ class CreateOrdersTable extends Migration
             $table->string('shipping_amount')->nullable();
             $table->string('shipping_tax_amount')->nullable();
             $table->string('shipping_description')->nullable();
-            $table->string('id')->nullable();
 
         });
     }
