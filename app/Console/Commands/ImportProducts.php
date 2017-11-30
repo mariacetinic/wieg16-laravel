@@ -12,14 +12,16 @@ class ImportProducts extends Command
      *
      * @var string
      */
-    protected $signature = 'get:products {url} {file_name}';
+    //protected $signature = 'get:products {url} {file_name}';
+    protected $signature = 'import:products';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Hämtar data och sparar i en fil';
+    //protected $description = 'Hämtar data och sparar i en fil';
+    protected $description = 'Importera produkter';
 
     /**
      * Create a new command instance.
@@ -38,7 +40,7 @@ class ImportProducts extends Command
      */
     public function handle()
     {
-        $url = $this->argument('url');
+        /*$url = $this->argument('url');
         $file = $this->argument('file_name');
 
         $this->info("Initializing curl..."); //efter det nedan från $curl skrivs this)delar upp stegen som kommandot tar
@@ -51,6 +53,25 @@ class ImportProducts extends Command
         $response = curl_exec($curl); //innehållet blir responsen
         Storage::put($file, $response);
         $this->info("File stored at: ".$file);
-        //var_dump($url, $file);
+        //var_dump($url, $file);*/
+
+        $this->info("Import products: ");
+        //  Initiate curl
+        $ch = curl_init();
+        $url = ("https://www.milletech.se/invoicing/export/products");
+        // Disable SSL verification
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        // Will return the response, if false it print the response
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        // Set the url
+        curl_setopt($ch, CURLOPT_URL,$url);
+        // Execute
+        $result=json_decode(curl_exec($ch), true);
+        // Closing
+        curl_close($ch);
+
+
+
+
     }
 }

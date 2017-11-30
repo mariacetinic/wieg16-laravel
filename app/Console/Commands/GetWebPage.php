@@ -12,14 +12,15 @@ class GetWebPage extends Command
      *
      * @var string
      */
-    protected $signature = 'get:webpage {url} {file_name}';
+    //protected $signature = 'get:webpage {url} {file_name}';
+    protected $signature = 'import:products';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Hämta en webbsida och spara i fil';
+    protected $description = 'Importerar kunder';
 
     /**
      * Create a new command instance.
