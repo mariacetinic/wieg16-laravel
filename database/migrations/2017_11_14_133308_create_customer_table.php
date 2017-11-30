@@ -37,6 +37,7 @@ class CreateCustomerTable extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->bigInteger('id', false, true)->primary();
+            $table->bigInteger('company_id', false, true)->nullable();
 
             $table->string('email')->nullable();
             $table->string('firstname')->nullable();
@@ -66,6 +67,6 @@ class CreateCustomerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customer');
+        Schema::dropIfExists('customers');
     }
 }
