@@ -51,7 +51,7 @@ Företagsnamnen lagras sedan i den nya separata tabellen och kunder med detta f�
 ## Övning 7
 Utöka din customers.php så att man kan hämta kunder baserat på company_id.
 Om company_id anges så skall alla kunder med detta id visas.
-Exempel på url: http://wieg16-api.dev/customers?company_id=1
+Exempel på url: http://wieg16-api.dev/customers/by-company/1 
 Denna url skall då visa mig alla kunder med company_id 1 i json-format.
 
 
