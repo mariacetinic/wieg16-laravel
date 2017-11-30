@@ -62,6 +62,7 @@ Nya vidder öppnar sig framför oss! Nu är det dags att börja bygga på en app
 
 ## Övning 1
 Nya vidder och nya url:er. Vi har upptäckt en ny datakälla här: https://www.milletech.se/invoicing/export/ Vad verkar den innehålla? Titta på datan och försök klura ut vad detta kan vara för något.
+Mitt svar: Det är fakturor.
 
 ## Övning 2
 Gör ett konsollkommando för importen precis som du gjorde för kunderna.
