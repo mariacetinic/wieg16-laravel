@@ -11,8 +11,9 @@ class Customer extends Model
 
     //Primary antas vara id
     //protected $primaryKey = "id";
+
     public $incrementing = false;
-    public $timestamps = false;
+    public $timestamps = false; //laravel ska inte sköta timestamps, jag vill göra det själv. Vid true kommer laravel göra det automatiskt. Sätter oftast false när datan kommer från någonannastans och inte en själv
 
     // Om ni istället vill vitlista kolumner
     protected $fillable = [
@@ -34,4 +35,16 @@ class Customer extends Model
         "id",
         "company_id"
     ];
+
+    public function item() {
+        return $this->belongsToMany(Item::class);
+    }
+
+    public function billingAddress() {
+        return $this->belongsToMany(BillingAddress::class);
+    }
+
+    public function shippingAddress() {
+        return $this->belongsToMany(ShippingAddress::class);
+    }
 }

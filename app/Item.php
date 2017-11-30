@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Items extends Model
+class Item extends Model
 {
     protected $fillable = [
         'id',
@@ -24,4 +24,14 @@ class Items extends Model
         'updated_at',
         'marking'
     ];
+
+    public function customer() {
+        return $this->belongsTo(Customer::class);
+    }
+
+    public function order() {
+        return $this->belongsTo(Order::class);
+    }
+
+
 }

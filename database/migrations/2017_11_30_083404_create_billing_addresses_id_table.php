@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBillingAddressIdTable extends Migration
+class CreateBillingAddressesIdTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBillingAddressIdTable extends Migration
      */
     public function up()
     {
-        Schema::create('billing_addres_id', function (Blueprint $table) {
+        Schema::create('billing_addresses_id', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->string('address_type')->nullable();
@@ -30,9 +30,7 @@ class CreateBillingAddressIdTable extends Migration
             $table->string('street')->nullable();
             $table->string('telephone')->nullable();
             $table->string('billing_address_id')->nullable();
-            $table->string('created_at')->nullable();
             $table->string('customer_email')->nullable();
-            $table->string('customer_id')->nullable();
             $table->string('grand_total')->nullable();
             $table->string('order_id')->nullable();
             $table->string('increment_id')->nullable();
@@ -46,6 +44,6 @@ class CreateBillingAddressIdTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('billing_addres_id');
+        Schema::dropIfExists('billing_addresses_id');
     }
 }

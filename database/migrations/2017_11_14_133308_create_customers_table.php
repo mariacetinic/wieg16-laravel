@@ -26,7 +26,7 @@ function get_webpage($url) {
 $json = json_decode(get_webpage("https://www.milletech.se/invoicing/export/customers"), true);
 
 
-class CreateCustomerTable extends Migration
+class CreateCustomersTable extends Migration
 {
     /**
      * Run the migrations.
