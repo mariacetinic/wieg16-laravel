@@ -16,7 +16,6 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->bigInteger('entity_id', false, true)->primary();
             $table->string('entity_type_id')->nullable();
-            $table->timestamps(); //lägger till created_at och updated_at
             $table->string('attribute_set_id')->nullable();
             $table->string('type_id')->nullable();
             $table->string('sku')->nullable();
