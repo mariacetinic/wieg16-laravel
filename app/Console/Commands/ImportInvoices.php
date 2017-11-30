@@ -39,12 +39,8 @@ class ImportInvoices extends Command{
      */
     public function handle(){
         $this->info("This is import invoices");
-
-
         $ch = curl_init();
         $url="https://www.milletech.se/invoicing/export/";
-
-
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_URL,$url);
