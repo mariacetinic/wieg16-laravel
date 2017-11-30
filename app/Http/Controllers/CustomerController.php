@@ -42,6 +42,17 @@ class CustomerController extends Controller
         }
     }
 
+    public function customersByCompanyId($company_id)
+    {
+        $customerCompany = Customer::find($company_id);
+
+        if ($customerCompany != null) {
+            return response()->json($customerCompany);
+
+        } else {
+            return response()->json(["message" => "Customer not found "], 404);
+        }
+    }
 
 
 }
