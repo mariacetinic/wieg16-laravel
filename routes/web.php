@@ -24,4 +24,7 @@ Route::get('customers/{id}/address', 'CustomerController@showCustomerAddress');
 
 Route::get('/customers/by-company/{company_id}', 'CustomerController@customersByCompanyId');
 
+Route::get('/fb-login', 'FacebookController@index');
+Route::get('/login', 'FacebookController@loginForm');
+Route::get('/facebook', 'FacebookController@fbShow');
 

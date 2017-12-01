@@ -10,6 +10,10 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
+        <!-- FACEBOOK | HTTPS required. HTTP will give a 403 forbidden response -->
+        <script src="https://sdk.accountkit.com/en_US/sdk.js"></script>
+
+
         <!-- Styles -->
         <style>
             html, body {
@@ -63,6 +67,13 @@
                 margin-bottom: 30px;
             }
         </style>
+
+        <script
+                src="https://code.jquery.com/jquery-3.2.1.min.js"
+                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+                crossorigin="anonymous">
+
+        </script>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -79,8 +90,17 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Facebook Login
                 </div>
+
+                <form action="" onsubmit="return false;">
+                    <input value="+46" id="country_code" />
+                    <input placeholder="phone number" id="phone_number"/>
+                    <button onclick="smsLogin();">Login via SMS</button>
+                    <div>OR</div>
+                    <input placeholder="email" id="email"/>
+                    <button onclick="emailLogin();">Login via Email</button>
+                </form>
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>
@@ -91,5 +111,61 @@
                 </div>
             </div>
         </div>
+
+        <script>
+            // initialize Account Kit with CSRF protection
+            AccountKit_OnInteractive = function(){
+                AccountKit.init(
+                    {
+                        appId:"123967801717928",
+                        state:"12345", //kan vara vad som helt
+                        version:"v1.2",
+                        fbAppEventsEnabled:true,
+                        redirect:"http://medielaravel.dev/fb-login",
+                        debug: true
+                    }
+                );
+            };
+
+            // login callback
+            function loginCallback(response) {
+                if (response.status === "PARTIALLY_AUTHENTICATED") {
+                    var code = response.code;
+                    var csrf = response.state;
+                    // Send code to server to exchange for access token
+                    $.get('/fb-login?code=' + response.code);
+                }
+                else if (response.status === "NOT_AUTHENTICATED") {
+                    // handle authentication failure
+                }
+                else if (response.status === "BAD_PARAMS") {
+                    // handle bad parameters
+                }
+            }
+
+            // phone form submission handler
+            function smsLogin() {
+                var countryCode = document.getElementById("country_code").value;
+                var phoneNumber = document.getElementById("phone_number").value;
+                AccountKit.login(
+                    'PHONE',
+                    {countryCode: countryCode, phoneNumber: phoneNumber}, // will use default values if not specified
+                    loginCallback
+                );
+            }
+
+
+            // email form submission handler
+            function emailLogin() {
+                var emailAddress = document.getElementById("email").value;
+                AccountKit.login(
+                    'EMAIL',
+                    {emailAddress: emailAddress},
+                    loginCallback
+                );
+            }
+        </script>
+
+
     </body>
 </html>

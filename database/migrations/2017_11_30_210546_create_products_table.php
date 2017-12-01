@@ -29,7 +29,6 @@ class CreateProductsTable extends Migration
             $table->string('price')->nullable();
             $table->string('is_salable')->nullable();
             $table->string('stock_item')->nullable();
-            $table->string('group_prices')->nullable();
         });
     }
 

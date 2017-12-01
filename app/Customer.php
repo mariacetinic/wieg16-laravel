@@ -35,16 +35,9 @@ class Customer extends Model
         "id",
         "company_id"
     ];
-
-    public function item() {
-        return $this->belongsToMany(Item::class);
+    
+    public function orders() {
+        return $this->hasMany(Order::class);
     }
 
-    public function billingAddress() {
-        return $this->belongsToMany(BillingAddress::class);
-    }
-
-    public function shippingAddress() {
-        return $this->belongsToMany(ShippingAddress::class);
-    }
 }
