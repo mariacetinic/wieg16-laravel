@@ -2,6 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Group;
+use App\GroupPrice;
+use App\Product;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 
@@ -70,15 +73,12 @@ class ImportProducts extends Command
         // Closing
         curl_close($ch);
 
-        foreach ($result as $product) {
+        foreach ($result['products'] as $product) {
             $this->info("Importerar produkter " . $product['entity_id']);
 
             $dbProduct = Product::findOrNew($product['entity_id']);
             //Spara med $customer->save()
             $dbProduct->fill($product)->save();
-
-
-
 
             if (isset($product['group_prices']) && is_array($product['group_prices'])) {
                 $group_prices = GroupPrice::findOrNew($product['group_prices']['group_id']);
@@ -86,12 +86,34 @@ class ImportProducts extends Command
                 $group_prices->save();
             }
 
-            if (isset($product['groups']) && is_array($product['groups'])) {
-                $products = Product::findOrNew($product['groups']['customer_group_id']);
-                $products->fill($product['groups']);
-                $products->save();
+
+            //kollar först att group_prices är satt och att det är en array, sedan görs en foreach
+            //när du gör en foreach så flyttar du dig ett steg ner så att säga
+            foreach ($product['group_prices'] as $gp){
+                $dbGroup = GroupPrice::findOrNew($gp['group_id']);
+                //Spara med $customer->save()
+                $dbGroup->fill($gp)->save();
             }
 
         }
+
+        foreach($result['groups'] as $group) {
+
+            $dbGroup = Group::findOrNew($group['customer_group_id']);
+            //Spara med $customer->save()
+            $dbGroup->fill($group)->save();
+
+
+        }
+
+
+
     }
 }
+
+
+/*if (isset($product['groups']) && is_array($product['groups'])) {
+    $products = Product::findOrNew($product['groups']['customer_group_id']);
+    $products->fill($product['groups']);
+    $products->save();
+}*/
