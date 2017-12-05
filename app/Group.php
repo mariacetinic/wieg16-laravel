@@ -19,7 +19,6 @@ class Group extends Model
     ];
 
 
-
     //en grupp kan ha flera grouprices t.ex. privatkund mfl
     public function groupPrice() {
         return $this->hasMany(GroupPrice::class);
@@ -29,4 +28,5 @@ class Group extends Model
     public function customer() {
         return $this->hasOne(Order::class);
     }
+
 }

@@ -70,8 +70,28 @@ class ImportProducts extends Command
         // Closing
         curl_close($ch);
 
+        foreach ($result as $product) {
+            $this->info("Importerar produkter " . $product['entity_id']);
+
+            $dbProduct = Product::findOrNew($product['entity_id']);
+            //Spara med $customer->save()
+            $dbProduct->fill($product)->save();
 
 
 
+
+            if (isset($product['group_prices']) && is_array($product['group_prices'])) {
+                $group_prices = GroupPrice::findOrNew($product['group_prices']['group_id']);
+                $group_prices->fill($product['group_prices']);
+                $group_prices->save();
+            }
+
+            if (isset($product['groups']) && is_array($product['groups'])) {
+                $products = Product::findOrNew($product['groups']['customer_group_id']);
+                $products->fill($product['groups']);
+                $products->save();
+            }
+
+        }
     }
 }

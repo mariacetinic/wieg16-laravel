@@ -14,8 +14,8 @@ class CreateGroupPricesTable extends Migration
     public function up()
     {
         Schema::create('group_prices', function (Blueprint $table) {
-            $table->bigInteger('price', false, true)->primary();
-            $table->string('group_id')->nullable();
+            $table->bigInteger('group_id', false, true)->primary();
+            $table->string('price')->nullable();
             $table->string('price_id')->nullable();
 
             $table->timestamps(); //lägger till created_at och updated_at

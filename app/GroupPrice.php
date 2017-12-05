@@ -31,8 +31,5 @@ class GroupPrice extends Model
     public function product(){
         return $this->belongsTo(Product::class);
     }
-
-
-
-
+//customer är inte med för den har ingen direkt länk
 }

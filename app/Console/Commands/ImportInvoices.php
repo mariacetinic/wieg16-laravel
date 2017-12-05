@@ -54,28 +54,14 @@ class ImportInvoices extends Command{
             $this->info("Importing/update order with id: ".$order['id']);
 
 
-            if ($order['status'] != 'processing') continue; {
-                $dbOrder = Order::findOrNew($order['id']);
-                $dbOrder->fill($order);
-                $dbOrder->save();
-            }
+            $dbCustomer = Customer::findOrNew($order['id']);
+            //Spara med $customer->save()
+            $dbCustomer->fill($order)->save();
 
-            if (isset($order['ShippingAddress']) && is_array($order['shipping_Address'])) {
-                $shippingAddress = ShippingAddress::findOrNew($order['shipping_Address']['id']);
-                $shippingAddress->fill($order['shipping_address']);
-                $shippingAddress->save();
-            }
-
-            if (isset($order['BillingAddress']) && is_array($order['billing_address'])) {
-                $billingAddress = BillingAddress::findOrNew($order['billing_address']['id']);
-                $billingAddress->fill($order['billing_address']);
-                $billingAddress->save();
-            }
-
-            foreach ($order['items'] as $item) {
-                $items = Item::findOrNew($item['id']);
-                $items->fill($item);
-                $items->save();
+            if (isset($customer['address']) && is_array($customer['address'])) {
+                $this->info("Importing or updating addresses" . $customer['address']['id']);
+                $address = CustomerAddress::findOrNew($customer['address']['id']);
+                $address->fill($customer['address'])->save();
             }
 
         }

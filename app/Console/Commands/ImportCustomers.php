@@ -72,7 +72,6 @@ class ImportCustomers extends Command
                 $address->fill($customer['address'])->save();
             }
 
-
             if ($dbCustomer->customer_company != null) {
                 $company = Company::firstOrNew(['company_name' => $dbCustomer->customer_company]);
                 $company->save();
@@ -82,8 +81,6 @@ class ImportCustomers extends Command
                     ->where("customer_company", "=", $company->company_name)
                     ->update(["company_id" => $company->id]);
             }
-
-
 
         }
     }
