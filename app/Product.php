@@ -9,8 +9,9 @@ class Product extends Model
 
     ////Primary antas vara id
     //protected $primaryKey = "id";
-    public $incrementing = false;
+    //public $incrementing = false;
     public $timestamps = false;
+
 
     // Om ni istället vill vitlista kolumner
     protected $fillable = [
@@ -30,6 +31,9 @@ class Product extends Model
         'is_salable',
         'stock_item'
     ];
+
+    //protected $table = 'products'; laravel förstår 
+    protected $primaryKey = 'entity_id';
 
     public function groupPrice(){
         return $this->hasMany(GroupPrice::class);
