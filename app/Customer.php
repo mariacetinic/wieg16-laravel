@@ -10,8 +10,7 @@ class Customer extends Model
     //protected $table = "my_customers";
 
     //Primary antas vara id
-    //protected $primaryKey = "id";
-
+    protected $primaryKey = "id";
     public $incrementing = false;
     public $timestamps = false; //laravel ska inte sköta timestamps, jag vill göra det själv. Vid true kommer laravel göra det automatiskt. Sätter oftast false när datan kommer från någonannastans och inte en själv
 

@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Customer;
+use App\CustomerAddress;
 use Illuminate\Console\Command;
 use App\ShippingAddress;
 use App\BillingAddress;

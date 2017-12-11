@@ -8,7 +8,8 @@ class GroupPrice extends Model
 {
 
     ////Primary antas vara id
-    //protected $primaryKey = "id";
+    protected $primaryKey = 'price_id';
+    protected $table = 'products';
     public $incrementing = false;
     public $timestamps = false;
 
@@ -22,8 +23,6 @@ class GroupPrice extends Model
 
 //som t.ex privat eller företagskund får jag ett pris
 //GroupPrice has one group
-
-
     public function group(){
         return $this->belongsTo(Group::class);
     }

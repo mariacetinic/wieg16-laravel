@@ -17,7 +17,6 @@ class CreateGroupsTable extends Migration
             $table->bigInteger('customer_group_id', false, true)->primary();
             $table->string('customer_group_code')->nullable();
             $table->string('tax_class_id')->nullable();
-
             $table->timestamps(); //lägger till created_at och updated_at
         });
     }

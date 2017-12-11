@@ -7,10 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
 
-    ////Primary antas vara id
-    //protected $primaryKey = "id";
-    //public $incrementing = false;
-    public $timestamps = false;
+    //protected $table = 'products'; laravel förstår
+    protected $primaryKey = 'entity_id';
+    protected $table = 'products';
 
 
     // Om ni istället vill vitlista kolumner
@@ -32,8 +31,7 @@ class Product extends Model
         'stock_item'
     ];
 
-    //protected $table = 'products'; laravel förstår 
-    protected $primaryKey = 'entity_id';
+
 
     public function groupPrice(){
         return $this->hasMany(GroupPrice::class);
