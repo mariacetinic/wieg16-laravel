@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Group extends Model
 {
 
-    public $incrementing = false;
-    public $timestamps = false;
+    /*public $incrementing = false;
+    public $timestamps = false;*/
     protected $primaryKey = 'customer_group_id';
     protected $table = 'products';
 
