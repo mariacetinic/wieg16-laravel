@@ -10,7 +10,7 @@ class Group extends Model
     /*public $incrementing = false;
     public $timestamps = false;*/
     protected $primaryKey = 'customer_group_id';
-    protected $table = 'products';
+    protected $table = 'groups';
 
     // Om ni istället vill vitlista kolumner
     protected $fillable = [

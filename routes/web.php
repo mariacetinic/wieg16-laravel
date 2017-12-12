@@ -28,3 +28,13 @@ Route::get('/fb-login', 'FacebookController@index');
 Route::get('/login', 'FacebookController@loginForm');
 Route::get('/facebook', 'FacebookController@fbShow');
 
+// I routes/web.php kan du sedan skriva för att få ut alla router /photo &osv
+Route::resource('/companies', 'CompanyController');
+
+Route::get('/instagram', 'InstagramController@fbShow');
+
+Route::get('/klarna', 'KlarnaController@index');
+
+Route::get('/klarna-confirmation', 'KlarnaController@confirmation');
+
+Route::get('/klarna-acknowledge', 'KlarnaController@acknowledge');

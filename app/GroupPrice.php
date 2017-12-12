@@ -9,7 +9,7 @@ class GroupPrice extends Model
 
     ////Primary antas vara id
     protected $primaryKey = 'price_id';
-    protected $table = 'products';
+    //protected $table = 'products';
     public $incrementing = false;
     public $timestamps = false;
 
