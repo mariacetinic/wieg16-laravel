@@ -14,7 +14,7 @@ class GroupController extends Controller
      */
     public function index()
     {
-        //
+        dd("Detta är ett test");
     }
 
     /**
