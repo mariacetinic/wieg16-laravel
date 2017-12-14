@@ -77,11 +77,12 @@
 </head>
 <body>
 
-<!--urlen för att komma åt delete
+<!--urlen för att komma åt delete-->
 
 <div class="content">
     Radera grupper
 </div>
+
 @foreach($groups as $group)
 
     <table>
