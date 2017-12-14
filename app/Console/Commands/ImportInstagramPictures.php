@@ -74,12 +74,6 @@ class ImportInstagramPictures extends Command
                 'url' => $instagramId['images']['standard_resolution']['url']
             ])->save();
 
-
-            /*
-            $dbInstagramPicture = InstagramPicture::findOrNew($instagrampics['images']['standard_resolution']['url']);
-            $dbInstagramPicture->fill($instagrampics)->save();
-            */
-
         }
 
     }

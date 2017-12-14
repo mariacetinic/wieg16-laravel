@@ -32,6 +32,7 @@ Route::get('/facebook', 'FacebookController@fbShow');
 Route::resource('products', 'ProductController');
 Route::resource('groups', 'GroupController');
 Route::resource('instagram', 'InstagramPictureController');
+//Route::resource('tweets', 'TweetsController');
 
 Route::get('/instagram', 'InstagramController@fbShow');
 
