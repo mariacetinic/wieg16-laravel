@@ -79,46 +79,34 @@
 
 
 <div class="content">
-    Radera en grupp
-
+    Radera grupper
 </div>
+@foreach($groups as $group)
 
-</div>
+    <table>
+        <thead>
+        <tr>
+            <td>Customer group id</td>
+            <td>Customer group code</td>
+            <td>Tax class id</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ $group->customer_group_id }}</td>
+            <td>{{ $group->customer_group_code }}</td>
+            <td>{{ $group->tax_class_id }}</td>
 
-
-<table>
-    <thead>
-    <tr>
-        <td>Customer group id</td>
-        <td>Customer group code</td>
-        <td>Tax class id</td>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>{{ $group->customer_group_id }}</td>
-        <td>{{ $group->customer_group_code }}</td>
-        <td>{{ $group->tax_class_id }}</td>
-
-    </tr>
-    </tbody>
-</table>
-
-<form action="{{ action('GroupController@destroy', $group->customer_group_id) }}"  method="post">
-    {{ csrf_field() }}
-    {{ method_field('DElETE') }}
-
-    <label>Lägg till en ny kod</label>
-    <input name="customer_group_code" type="text" value="{{$group->customer_group_code}}">
-    <label>Lägg till en tax class id</label>
-    <input name="tax_class_id" type="text" value="{{$group->tax_class_id}}">
-
-
-
-    <input name="submit" type="submit" value="Radera">
-
-</form>
-
+        </tr>
+        </tbody>
+    </table>
+    <a href="{{action('GroupController@edit', $group->customer_group_id)}}">Redigera</a>
+    <form action="{{ action('GroupController@destroy', $group->customer_group_id) }}" method="post">
+        {{ csrf_field() }}
+        {{ method_field('DElETE') }}
+        <input name="submit" type="submit" value="Radera">
+    </form>
+@endforeach
 
 
 </body>

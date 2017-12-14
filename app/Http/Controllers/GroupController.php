@@ -15,6 +15,7 @@ class GroupController extends Controller
     public function index()
     {
         //dd("Detta är ett test");
+        return view('groups/delete', ['groups' => Group::all()]);
         return response()->json(Group::all());
 
 
@@ -91,11 +92,9 @@ class GroupController extends Controller
      * @param  \App\Group  $group
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Group $id)
+    public function destroy(Group $group)
     {
-        dd('RADERA');
-        $group = Group::find($id);
         $group->delete();
-        return response()->redirectToAction('GroupController@show', ['group' => $group]);
+        return response()->redirectToAction('GroupController@index');
     }
 }
