@@ -25,33 +25,7 @@
             margin: 0;
         }
 
-        .full-height {
-            height: 100vh;
-        }
 
-        .flex-center {
-            align-items: center;
-            display: flex;
-            justify-content: center;
-        }
-
-        .position-ref {
-            position: relative;
-        }
-
-        .top-right {
-            position: absolute;
-            right: 10px;
-            top: 18px;
-        }
-
-        .content {
-            text-align: center;
-        }
-
-        .title {
-            font-size: 84px;
-        }
 
         .links > a {
             color: #636b6f;
@@ -63,8 +37,16 @@
             text-transform: uppercase;
         }
 
-        .m-b-md {
-            margin-bottom: 30px;
+        #galleri{
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        img{
+            width: 20%;
+            height: 200px;
+            object-fit: cover;
+
         }
     </style>
 
@@ -78,11 +60,12 @@
 <body>
 
 
-<!--formulär med fält som motsvarar kolumnerna i databasen-->
+<h1>Bildgalleri från mitt Instagram</h1>
+<div id="galleri">
+@foreach($images as $img)
+        <img src="{{$img->url}}">
 
-
-
-
-
+@endforeach
+</div>
 </body>
 </html>

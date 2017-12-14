@@ -14,7 +14,8 @@ class InstagramPictureController extends Controller
      */
     public function index()
     {
-        //
+        return view('instagram/show', ['url' => InstagramPicture::all()]);
+
     }
 
     /**
@@ -46,7 +47,9 @@ class InstagramPictureController extends Controller
      */
     public function show(InstagramPicture $instagramPicture)
     {
-        //
+        $images = InstagramPicture::all();
+        return view('instagram.show', ['images' => $images]);
+
     }
 
     /**
