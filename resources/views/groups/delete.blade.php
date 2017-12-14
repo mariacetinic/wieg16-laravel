@@ -77,6 +77,7 @@
 </head>
 <body>
 
+<!--urlen för att komma åt delete
 
 <div class="content">
     Radera grupper

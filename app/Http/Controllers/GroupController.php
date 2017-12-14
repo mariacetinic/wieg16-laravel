@@ -15,7 +15,8 @@ class GroupController extends Controller
     public function index()
     {
         //dd("Detta är ett test");
-        return view('groups/delete', ['groups' => Group::all()]);
+
+        return view('groups/delete', ['groups' => Group::all()]);//läggs till i efterhand när delete görs
         return response()->json(Group::all());
 
 

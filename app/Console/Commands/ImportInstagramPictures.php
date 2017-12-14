@@ -67,10 +67,11 @@ class ImportInstagramPictures extends Command
         foreach($result['data'] as $instagramId) {
             $this->info("Importing/update instagrampictures with id: " . $instagramId['id']);
 
-            //
+
             $dbInstagramId = InstagramPicture::findOrNew($instagramId['id']);
             $dbInstagramId->fill([
                 'id' => $instagramId['id'],
+                //för att komma åt url gör man såhär eftersom det är en annan struktur.
                 'url' => $instagramId['images']['standard_resolution']['url']
             ])->save();
 
