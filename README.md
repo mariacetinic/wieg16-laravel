@@ -1,3 +1,30 @@
+# Övningar för Lektion 9-10: Instagram och Twitter
+Dags att missbruka några API:er!
+## Övning 1
+Använd bilderna på ditt Instagramkonto (eller ladda upp nya om du inte har några).
+Hämta hem dina bilder och skapa en lämplig databastabell för dem.
+Tabellen skapar du genom att göra en ny migration i Laravel.
+## Övning 2
+Gör ett bildgalleri på din sida med dina instagrambilder i.
+Bilderna skall komma från din databas.
+## Övning 3
+Använd Twitters sök-API via https://api.twitter.com/1.1/search/tweets.json?q=<ditt sökord här>
+Lagra tweets från responsen i din databas.
+Skapa en tabell för dina tweets precis som du gjorde för dina instagrambilder.
+## Övning 4
+Analysera texterna från de tweets du hämtade hem och räkna ordförekomst.
+Slutresultatet skall bli en lista med ord och en siffra för hur många gånger varje ord förekommer.
+## Övning 5
+Gör en lista med stoppord som skall exkluderas från textanalysen.
+Implementera stopplistan så att dessa ord exkluderas från dina resultat.
+## Övning 6
+Gör en sida med ett formulär där man kan skriva in ett sökord.
+När formuläret skickas in så skall tweets hämtas hem via sök-API:et och resultatet från textanalysen visas.
+Gör en lista eller en tabell där orden listas tillsammans med hur många gånger de förekom.
+Listan skall vara sorterad så att orden med flest träffar hamnar överst.
+
+
+
 # Övningar för Lektion 5: Laravel
 Repetition är kunskapens moder!
 Ni skall nu göra om övning 3 från lektion 2 i Laravel och sedan även göra om övningarna från lektion 3 (API:er) i Laravel.
@@ -80,33 +107,4 @@ Försök lista ut vilka relationer dina modeller skall ha och sätt upp dem i ko
 Nu när du förhoppningsvis vet vad datan är för något så är det dags att importera den. Skriv själva importkoden i ditt konsollkommando. Du skall bara importera dem som har status="processing".
 
 
-
-# Övningar för Lektion 8: Laravel Controllers
-Nu när ni importerat en massa data från olika endpoints så skulle man kunna tro att det var slut men det är det inte. Det finns en sista datakälla kvar.
-
-## Övning 1
-Den sista datakällan: https://www.milletech.se/invoicing/export/products Eller? Ta dig en titt men var uppmärksam på att den tar ganska lång tid att hämta hem. Kanske det är dags att mellanlagra?
-
-## Övning 2
-Gör ett konsollkommando för importen precis som du gjorde tidigare.
-
-## Övning 3
-Skriv lämpliga migrationer för datan som du skall importera.
-
-## Övning 4
-Gör nya modeller för de nya tabellerna.
-
-## Övning 5
-Försök lista ut vilka relationer dina modeller skall ha och sätt upp dem i kod.
-
-## Övning 6
-Nu när du förhoppningsvis vet vad datan är för något så är det dags att importera den. Skriv själva importkoden i ditt konsollkommando.
-
-## Övning 7
-Nu när du äntligen importerat en massa data och gjort modeller för datan så är det dags att ge modellerna controllers. Gör en controller för varje model och gör dem till resource controllers med lämpligt Artisan-kommando.
-
-## Övning 8
-Fyll ut alla REST-endpoints med fungerande kod. Sätt även upp resource routes i routes/web.php. Följ instruktionerna som står i själva controller-filen.
-
-## Övning 9
-Varje controller skall alltså innehålla basic CRUD. Lägg inte något fokus på design just nu. Använd Postman för att testa update och delete om du vill.
+je controller skall alltså innehålla basic CRUD. Lägg inte något fokus på design just nu. Använd Postman för att testa update och delete om du vill.
