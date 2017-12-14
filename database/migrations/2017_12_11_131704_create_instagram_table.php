@@ -16,8 +16,6 @@ class CreateInstagramTable extends Migration
         Schema::create('instagram', function (Blueprint $table) {
 
             $table->bigInteger('id', true, true)->primary();
-            $table->bigInteger('width');
-            $table->bigInteger('length');
             $table->string('url');
             $table->timestamps();
         });

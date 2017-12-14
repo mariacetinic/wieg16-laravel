@@ -14,7 +14,7 @@ class InstagramController extends Controller
      */
     public function index()
     {
-        //
+        //säga till kontroller att skicka bilder till view
     }
 
     /**

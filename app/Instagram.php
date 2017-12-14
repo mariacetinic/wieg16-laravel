@@ -8,8 +8,6 @@ class Instagram extends Model
 {
     protected $fillable = [
         'id',
-        'width',
-        'length',
         'url'
     ];
 }
