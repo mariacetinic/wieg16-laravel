@@ -2,9 +2,11 @@
 
 namespace App\Console\Commands;
 
+use App\InstagramPicture;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Storage;
 
-class ImportInstagram extends Command
+class ImportInstagramPictures extends Command
 {
 
     /**
@@ -12,14 +14,14 @@ class ImportInstagram extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'import:instagrampictures {url}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Importera bilder från instagram';
 
     /**
      * Create a new command instance.
@@ -39,10 +41,11 @@ class ImportInstagram extends Command
     public function handle()
     {
 
+        $url = $this->argument('url');
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://api.instagram.com/v1/users/self/media/recent?access_token=23137978.a21017d.0acec9cf290d4cdf99244227be9fc916",
+            CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -51,7 +54,7 @@ class ImportInstagram extends Command
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
                 "cache-control: no-cache",
-                "postman-token: 0fcce172-56eb-91fd-cc4e-c591ca138259"
+                "postman-token: 111f431e-d78e-c002-b05b-242252cbc3a3"
             ),
         ));
 
@@ -59,13 +62,25 @@ class ImportInstagram extends Command
         $err = curl_error($curl);
 
         curl_close($curl);
+        $result = json_decode($response, true);
 
-        if ($err) {
-            echo "cURL Error #:" . $err;
-        } else {
-            echo $response;
+        foreach($result['data'] as $instagramId) {
+            $this->info("Importing/update instagrampictures with id: " . $instagramId['id']);
+
+            //
+            $dbInstagramId = InstagramPicture::findOrNew($instagramId['id']);
+            $dbInstagramId->fill([
+                'id' => $instagramId['id'],
+                'url' => $instagramId['images']['standard_resolution']['url']
+            ])->save();
+
+
+            /*
+            $dbInstagramPicture = InstagramPicture::findOrNew($instagrampics['images']['standard_resolution']['url']);
+            $dbInstagramPicture->fill($instagrampics)->save();
+            */
+
         }
-
 
     }
 }

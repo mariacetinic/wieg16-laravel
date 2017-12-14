@@ -77,16 +77,7 @@
 </head>
 <body>
 
-<form action="{{action('GroupController@store')}}" method="post">
-    {{csrf_field()}}
-    customer_group_id: <input type="text" name="customer_group_id"><br>
-    customer_group_code: <input type="text" name="customer_group_code"><br>
-    tax_class_id: <input type="text" name="tax_class_id"><br>
 
-    <input type="submit" value="Submit">
-
-
-</form>
 <!--formulär med fält som motsvarar kolumnerna i databasen-->
 
 

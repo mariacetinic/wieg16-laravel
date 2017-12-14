@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Instagram;
+use App\InstagramPicture;
 use Illuminate\Http\Request;
 
-class InstagramController extends Controller
+class InstagramPictureController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class InstagramController extends Controller
      */
     public function index()
     {
-        //säga till kontroller att skicka bilder till view
+        //
     }
 
     /**
@@ -41,10 +41,10 @@ class InstagramController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Instagram  $instagram
+     * @param  \App\InstagramPicture  $instagramPicture
      * @return \Illuminate\Http\Response
      */
-    public function show(Instagram $instagram)
+    public function show(InstagramPicture $instagramPicture)
     {
         //
     }
@@ -52,10 +52,10 @@ class InstagramController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Instagram  $instagram
+     * @param  \App\InstagramPicture  $instagramPicture
      * @return \Illuminate\Http\Response
      */
-    public function edit(Instagram $instagram)
+    public function edit(InstagramPicture $instagramPicture)
     {
         //
     }
@@ -64,10 +64,10 @@ class InstagramController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Instagram  $instagram
+     * @param  \App\InstagramPicture  $instagramPicture
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Instagram $instagram)
+    public function update(Request $request, InstagramPicture $instagramPicture)
     {
         //
     }
@@ -75,10 +75,10 @@ class InstagramController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Instagram  $instagram
+     * @param  \App\InstagramPicture  $instagramPicture
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Instagram $instagram)
+    public function destroy(InstagramPicture $instagramPicture)
     {
         //
     }

@@ -13,9 +13,9 @@ class CreateInstagramTable extends Migration
      */
     public function up()
     {
-        Schema::create('instagram', function (Blueprint $table) {
+        Schema::create('instagram_pictures', function (Blueprint $table) {
 
-            $table->bigInteger('id', true, true)->primary();
+            $table->string('id')->primary();
             $table->string('url');
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ class CreateInstagramTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('instagram');
+        Schema::dropIfExists('instagram_pictures');
     }
 }
