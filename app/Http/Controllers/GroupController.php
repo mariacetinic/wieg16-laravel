@@ -14,7 +14,10 @@ class GroupController extends Controller
      */
     public function index()
     {
-        dd("Detta är ett test");
+        //dd("Detta är ett test");
+        return response()->json(Group::all());
+
+
     }
 
     /**
@@ -24,7 +27,7 @@ class GroupController extends Controller
      */
     public function create()
     {
-        //
+        return view('groups/create');
     }
 
     /**
@@ -35,7 +38,10 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $group = new Group();
+        $group->fill($input)->save();
+        return response()->redirectToAction('GroupController@create');
     }
 
     /**
@@ -44,9 +50,10 @@ class GroupController extends Controller
      * @param  \App\Group  $group
      * @return \Illuminate\Http\Response
      */
-    public function show(Group $group)
+    public function show($id)
     {
-        //
+        $group = Group::find($id);
+        return view('groups.show', ['group' => $group]);
     }
 
     /**
@@ -55,9 +62,12 @@ class GroupController extends Controller
      * @param  \App\Group  $group
      * @return \Illuminate\Http\Response
      */
-    public function edit(Group $group)
+    public function edit($id)
     {
-        //
+        //url http://medielaravel.dev/groups/3/edit
+        //dd('UPDATE');
+        $edit = Group::find($id);
+        return View('groups.edit', ['edit' => $edit]);
     }
 
     /**
@@ -69,7 +79,10 @@ class GroupController extends Controller
      */
     public function update(Request $request, Group $group)
     {
-        //
+        $input = $request->all();
+        $group->fill($input)->save();
+        return response()->redirectToAction('GroupController@edit', ['id' => $group->customer_group_id]);
+        //return redirect('/update');
     }
 
     /**
@@ -78,8 +91,11 @@ class GroupController extends Controller
      * @param  \App\Group  $group
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Group $group)
+    public function destroy(Group $id)
     {
-        //
+        dd('RADERA');
+        $group = Group::find($id);
+        $group->delete();
+        return response()->redirectToAction('GroupController@show', ['group' => $group]);
     }
 }
