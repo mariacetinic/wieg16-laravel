@@ -77,30 +77,34 @@
 </head>
 <body>
 
+
 <div class="content">
-        Se en grupp
+    Radera grupper
 </div>
+@foreach($groups as $group)
 
-<table>
-    <thead>
-    <tr>
-        <td>ID</td>
-        <td>Code</td>
-        <td>Tax class id</td>
-    </tr>
-    </thead>
-    <tbody>
+    <table>
+        <thead>
+        <tr>
+            <td>Customer group id</td>
+            <td>Customer group code</td>
+            <td>Tax class id</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ $group->entity_id }}</td>
 
-    <tr>
-        <td>{{ $group->entity_id }}</td>
-        <td>{{ $group->customer_group_code }}</td>
-        <td>{{ $group->tax_class_id }}</td>
-
-    </tr>
-
-    </tbody>
-</table>
-
+        </tr>
+        </tbody>
+    </table>
+    <a href="{{action('ProductController@edit', $group->entity_id)}}">Redigera</a>
+    <form action="{{ action('ProductController@destroy', $group->entity_id) }}" method="post">
+        {{ csrf_field() }}
+        {{ method_field('DElETE') }}
+        <input name="submit" type="submit" value="Radera">
+    </form>
+@endforeach
 
 
 </body>

@@ -14,7 +14,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        //dd("Detta är ett test");
+        return view('products/delete', ['groups' => Product::all()]);
+        return response()->json(Group::all());
     }
 
     /**
@@ -24,7 +26,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('products/create');
     }
 
     /**
@@ -35,7 +37,10 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $group = new Product();
+        $group->fill($input)->save();
+        return response()->redirectToAction('ProductController@create');
     }
 
     /**
@@ -44,9 +49,10 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        //
+        $group = Product::find($id);
+        return view('product.show', ['product' => $product]);
     }
 
     /**
@@ -55,9 +61,10 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Product $id)
     {
-        //
+        $edit = Product::find($id);
+        return View('product.edit', ['edit' => $edit]);
     }
 
     /**
@@ -69,7 +76,10 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $input = $request->all();
+        $product->fill($input)->save();
+        return response()->redirectToAction('ProductController@edit', ['id' => $product->entity_id]);
+        //return redirect('/update');
     }
 
     /**
@@ -80,6 +90,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return response()->redirectToAction('ProductController@index');
     }
 }

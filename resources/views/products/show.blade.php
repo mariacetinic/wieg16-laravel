@@ -92,10 +92,7 @@
     <tbody>
 
     <tr>
-        <td>{{ $group->entity_id }}</td>
-        <td>{{ $group->customer_group_code }}</td>
-        <td>{{ $group->tax_class_id }}</td>
-
+        <td>{{ $group->customer_group_id }}</td>
     </tr>
 
     </tbody>

@@ -78,28 +78,41 @@
 <body>
 
 <div class="content">
-        Se en grupp
+    Uppdatera en grupp
+
 </div>
+
+</div>
+
 
 <table>
     <thead>
     <tr>
-        <td>ID</td>
-        <td>Code</td>
+        <td>Customer group id</td>
+        <td>Customer group code</td>
         <td>Tax class id</td>
     </tr>
     </thead>
     <tbody>
-
     <tr>
-        <td>{{ $group->entity_id }}</td>
-        <td>{{ $group->customer_group_code }}</td>
-        <td>{{ $group->tax_class_id }}</td>
+        <td>{{ $edit->entity_id }}</td>
 
     </tr>
-
     </tbody>
 </table>
+
+<form action="{{ action('ProductController@update', $edit->entity_id) }}"  method="post">
+    {{ csrf_field() }}
+    {{ method_field('PUT') }}
+    <label>Lägg till en ny kod</label>
+    <input name="customer_group_code" type="text" value="{{$edit->entity_id}}">
+    <input name="submit" type="submit" value="Uppdatera">
+
+</form>
+
+
+
+
 
 
 

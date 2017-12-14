@@ -77,29 +77,21 @@
 </head>
 <body>
 
-<div class="content">
-        Se en grupp
-</div>
+<h1>Produkter</h1>
 
-<table>
-    <thead>
-    <tr>
-        <td>ID</td>
-        <td>Code</td>
-        <td>Tax class id</td>
-    </tr>
-    </thead>
-    <tbody>
+<form action="{{action('ProductController@store')}}" method="post">
+    {{csrf_field()}}
+    <!--lägger till en input för enkelhetens skull -->
+    entity_id: <input type="text" name="entity_id"><br>
 
-    <tr>
-        <td>{{ $group->entity_id }}</td>
-        <td>{{ $group->customer_group_code }}</td>
-        <td>{{ $group->tax_class_id }}</td>
 
-    </tr>
+    <input type="submit" value="Submit">
 
-    </tbody>
-</table>
+
+</form>
+<!--formulär med fält som motsvarar kolumnerna i databasen-->
+
+
 
 
 
