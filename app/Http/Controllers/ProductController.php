@@ -16,7 +16,7 @@ class ProductController extends Controller
     {
         //dd("Detta är ett test");
         return view('products/delete', ['groups' => Product::all()]);
-        return response()->json(Group::all());
+        return response()->json(Product::all());
     }
 
     /**
