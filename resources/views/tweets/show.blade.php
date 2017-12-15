@@ -63,6 +63,25 @@
 <h1>Tweets från metoo</h1>
 <div id="galleri">
 
+    @foreach($products as $product)
+
+        <table>
+            <thead>
+            <tr>
+                <td>Id</td>
+                <td>Tweet</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ $product->entity_id }}</td>
+                <td>{{ $product->price }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+    @endforeach
+
 </div>
 </body>
 </html>

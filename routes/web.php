@@ -33,9 +33,9 @@ Route::resource('products', 'ProductController');
 Route::resource('groups', 'GroupController');
 Route::resource('instagram', 'InstagramPictureController');
 
-Route::resource('tweets', 'TweetController');
+Route::get('/tweets', 'TweetsController@index');
 
-Route::get('/instagram', 'InstagramController@fbShow');
+//Route::get('/instagram', 'InstagramController@fbShow');
 
 Route::get('/klarna', 'KlarnaController@index');
 

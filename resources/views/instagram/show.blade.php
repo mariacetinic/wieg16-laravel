@@ -62,10 +62,7 @@
 
 <h1>Bildgalleri från mitt Instagram</h1>
 <div id="galleri">
-@foreach($images as $img)
-        <img src="{{$img->url}}">
-
-@endforeach
+    <img src="{{$image->url}}">
 </div>
 </body>
 </html>

@@ -14,7 +14,8 @@ class InstagramPictureController extends Controller
      */
     public function index()
     {
-        return view('instagram/show', ['url' => InstagramPicture::all()]);
+
+        return view('instagram/index', ['images' => InstagramPicture::all()]);
 
     }
 
@@ -42,13 +43,14 @@ class InstagramPictureController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\InstagramPicture  $instagramPicture
      * @return \Illuminate\Http\Response
      */
-    public function show(InstagramPicture $instagramPicture)
+    public function show($instagramPicture)
     {
-        $images = InstagramPicture::all();
-        return view('instagram.show', ['images' => $images]);
+        //skickar in id:et i find och då hittar den rätt
+        return view('instagram.show', ['image' => InstagramPicture::find( $instagramPicture)]);
+
+        //return view('groups.show', ['group' => $group]);*/
 
     }
 
