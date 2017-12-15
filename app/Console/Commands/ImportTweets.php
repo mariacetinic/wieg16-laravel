@@ -2,26 +2,24 @@
 
 namespace App\Console\Commands;
 
-use App\InstagramPicture;
+use App\Tweet;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Storage;
 
-class ImportInstagramPictures extends Command
+class ImportTweets extends Command
 {
-
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'import:instagrampictures {url}';
+    protected $signature = 'import:tweets {url}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Importera bilder från instagram';
+    protected $description = 'Importing tweets from twitter';
 
     /**
      * Create a new command instance.
@@ -40,12 +38,10 @@ class ImportInstagramPictures extends Command
      */
     public function handle()
     {
-
-        $url = $this->argument('url');
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => $url,
+            CURLOPT_URL => "https://api.twitter.com/1.1/search/tweets.json?q=metoo",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -53,8 +49,9 @@ class ImportInstagramPictures extends Command
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
+                "authorization: Bearer AAAAAAAAAAAAAAAAAAAAANir3QAAAAAAo7mISs5vYWnPmQP%2B7%2BQRS4AMbns%3DFlJtPgu1uCZm1GUkc2kd7kx76fzOF09EJbYtNdcVNd8MoUONol",
                 "cache-control: no-cache",
-                "postman-token: 111f431e-d78e-c002-b05b-242252cbc3a3"
+                "postman-token: 20e19297-fb10-b938-02cd-c07cb41b960d"
             ),
         ));
 
@@ -62,18 +59,19 @@ class ImportInstagramPictures extends Command
         $err = curl_error($curl);
 
         curl_close($curl);
+
         $result = json_decode($response, true);
 
-        foreach($result['data'] as $instagramId) {
-            $this->info("Importing/update instagrampictures with id: " . $instagramId['id']);
+        foreach($result['statuses'] as $tweet) {
+            $this->info("Importing/update tweets with id: " . $tweet['id']);
+            //
+            var_dump($tweet['text']);
+            $dbTweet = Tweet::findOrNew($tweet['id']);
 
-
-            $dbInstagramId = InstagramPicture::findOrNew($instagramId['id']);
-            $dbInstagramId->fill([
-                'id' => $instagramId['id'],
-                'url' => $instagramId['images']['standard_resolution']['url']
+            $dbTweet->fill([
+                'id' => $tweet['id'],
+                'text' => $tweet['text']
             ])->save();
-            //för att komma åt url gör man såhär eftersom det är en annan struktur.
 
         }
 
