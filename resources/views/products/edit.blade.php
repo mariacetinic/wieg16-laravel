@@ -93,7 +93,7 @@
     <tbody>
     <tr>
         <td>{{ $edit->entity_id }}</td>
-        <td>{{ $product->price }}</td>
+        <td>{{ $edit->price }}</td>
     </tr>
     </tbody>
 </table>
