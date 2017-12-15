@@ -87,11 +87,13 @@
     <thead>
     <tr>
         <td>Entity Id</td>
+        <td>Price</td>
     </tr>
     </thead>
     <tbody>
     <tr>
         <td>{{ $edit->entity_id }}</td>
+        <td>{{ $product->price }}</td>
     </tr>
     </tbody>
 </table>
