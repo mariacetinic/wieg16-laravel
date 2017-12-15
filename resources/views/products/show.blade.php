@@ -84,15 +84,15 @@
 <table>
     <thead>
     <tr>
-        <td>ID</td>
-        <td>Code</td>
-        <td>Tax class id</td>
+        <td>Entity id</td>
+        <td>Price</td>
     </tr>
     </thead>
     <tbody>
 
     <tr>
-        <td>{{ $group->customer_group_id }}</td>
+        <td>{{ $product->entity_id }}</td>
+        <td>{{ $product->price }}</td>
     </tr>
 
     </tbody>

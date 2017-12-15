@@ -81,27 +81,26 @@
 <div class="content">
     Radera grupper
 </div>
-@foreach($groups as $group)
+@foreach($products as $product)
 
     <table>
         <thead>
         <tr>
-            <td>Customer group id</td>
-            <td>Customer group code</td>
-            <td>Tax class id</td>
+            <td>Entity id</td>
+            <td>Price</td>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td>{{ $group->entity_id }}</td>
-
+            <td>{{ $product->entity_id }}</td>
+            <td>{{ $product->price }}</td>
         </tr>
         </tbody>
     </table>
-    <a href="{{action('ProductController@edit', $group->entity_id)}}">Redigera</a>
-    <form action="{{ action('ProductController@destroy', $group->entity_id) }}" method="post">
+    <a href="{{action('ProductController@edit', $product->entity_id)}}">Redigera</a>
+    <form action="{{ action('ProductController@destroy', $product->entity_id) }}" method="post">
         {{ csrf_field() }}
-        {{ method_field('DElETE') }}
+        {{ method_field('DELETE') }}
         <input name="submit" type="submit" value="Radera">
     </form>
 @endforeach

@@ -15,7 +15,7 @@ class ProductController extends Controller
     public function index()
     {
         //dd("Detta är ett test");
-        return view('products/delete', ['groups' => Product::all()]);
+        return view('products/delete', ['products' => Product::all()]);
         return response()->json(Product::all());
     }
 
@@ -38,8 +38,8 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        $group = new Product();
-        $group->fill($input)->save();
+        $product = new Product();
+        $product->fill($input)->save();
         return response()->redirectToAction('ProductController@create');
     }
 
@@ -51,8 +51,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $group = Product::find($id);
-        return view('product.show', ['product' => $product]);
+        $product = Product::find($id);
+        return view('products.show', ['product' => $product]);
     }
 
     /**
@@ -61,10 +61,10 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $id)
+    public function edit(Product $product)
     {
-        $edit = Product::find($id);
-        return View('product.edit', ['edit' => $edit]);
+        //$edit = Product::find($product->id); stod $id först men den behöver inte hitta det eftersom den redan har det
+        return View('products.edit', ['edit' => $product]);
     }
 
     /**
@@ -78,7 +78,7 @@ class ProductController extends Controller
     {
         $input = $request->all();
         $product->fill($input)->save();
-        return response()->redirectToAction('ProductController@edit', ['id' => $product->entity_id]);
+        return response()->redirectToAction('ProductController@edit', ['entity_id' => $product->entity_id]);
         //return redirect('/update');
     }
 

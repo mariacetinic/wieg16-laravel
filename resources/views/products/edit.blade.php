@@ -82,21 +82,16 @@
 
 </div>
 
-</div>
-
 
 <table>
     <thead>
     <tr>
-        <td>Customer group id</td>
-        <td>Customer group code</td>
-        <td>Tax class id</td>
+        <td>Entity Id</td>
     </tr>
     </thead>
     <tbody>
     <tr>
         <td>{{ $edit->entity_id }}</td>
-
     </tr>
     </tbody>
 </table>
@@ -105,7 +100,8 @@
     {{ csrf_field() }}
     {{ method_field('PUT') }}
     <label>Lägg till en ny kod</label>
-    <input name="customer_group_code" type="text" value="{{$edit->entity_id}}">
+    <input name="entity_id" type="text" value="{{$edit->entity_id}}">
+    <input name="price" type="text" value="{{$edit->price}}">
     <input name="submit" type="submit" value="Uppdatera">
 
 </form>
