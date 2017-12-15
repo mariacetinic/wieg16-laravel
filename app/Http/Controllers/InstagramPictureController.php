@@ -47,6 +47,7 @@ class InstagramPictureController extends Controller
      */
     public function show($instagramPicture)
     {
+        //räcker med att använda en vanlig controller eftersom man inte behöver uppdatera mm
         //skickar in id:et i find och då hittar den rätt
         return view('instagram.show', ['image' => InstagramPicture::find( $instagramPicture)]);
 
