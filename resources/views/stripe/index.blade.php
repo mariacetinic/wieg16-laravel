@@ -25,7 +25,33 @@
             margin: 0;
         }
 
+        .full-height {
+            height: 100vh;
+        }
 
+        .flex-center {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
+
+        .position-ref {
+            position: relative;
+        }
+
+        .top-right {
+            position: absolute;
+            right: 10px;
+            top: 18px;
+        }
+
+        .content {
+            text-align: center;
+        }
+
+        .title {
+            font-size: 84px;
+        }
 
         .links > a {
             color: #636b6f;
@@ -37,15 +63,8 @@
             text-transform: uppercase;
         }
 
-        #galleri{
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        img{
-            width: 20%;
-            object-fit: cover;
-
+        .m-b-md {
+            margin-bottom: 30px;
         }
     </style>
 
@@ -59,13 +78,27 @@
 <body>
 
 
-<h1>Bildgalleri från mitt Instagram</h1>
-<div id="galleri">
+    <div class="content">
+        <div class="title m-b-md">
+            STRIPE
+        </div>
 
-@foreach($images as $img)
-        <img src="{{$img->url}}">
-@endforeach
-
+        <form action="/api/stripe-checkout" method="POST">
+            <script
+                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="pk_test_DBRK26lSP3dOq2C7JFPQInD6"
+                    data-amount="999"
+                    data-name="Demo Site"
+                    data-description="Widget"
+                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                    data-locale="auto"
+                    data-zip-code="true"
+                    data-currency="sek">
+            </script>
+        </form>
 </div>
+
+
+
 </body>
 </html>

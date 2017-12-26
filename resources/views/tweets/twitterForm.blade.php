@@ -61,27 +61,38 @@
 
 
 <h1>Tweets från metoo</h1>
-<div id="galleri">
 
-    @foreach($products as $product)
+<div clas="content">
+    <div class="title m-b-md" style=" ">
+        Tweets
+    </div>
 
-        <table>
-            <thead>
+    <form action="{{ action('TweetsController@countAndSort') }}" method="get">
+        {{ csrf_field() }}
+        Search:
+        <input type="text" name="search tweet" value="" placeholder="Search tweet"><br>
+        <input type="count tweets">
+    </form>
+    <table>
+        <thead>
+        <tr>
+            <td>Word</td>
+            <td>Count</td>
+        </tr>
+        </thead>
+        <tbody>
+
+        @foreach($words as $word => $number)
             <tr>
-                <td>Id</td>
-                <td>Tweet</td>
+                <td>{{ $word }}</td>
+                <td>{{ $number }}</td>
             </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>{{ $product->entity_id }}</td>
-                <td>{{ $product->price }}</td>
-            </tr>
-            </tbody>
-        </table>
 
-    @endforeach
+        @endforeach
+        </tbody>
+    </table>
 
 </div>
+
 </body>
 </html>

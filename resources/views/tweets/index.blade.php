@@ -44,6 +44,7 @@
 
         img{
             width: 20%;
+            height: 200px;
             object-fit: cover;
 
         }
@@ -59,13 +60,22 @@
 <body>
 
 
-<h1>Bildgalleri från mitt Instagram</h1>
-<div id="galleri">
+<h1>Tweets från metoo</h1>
 
-@foreach($images as $img)
-        <img src="{{$img->url}}">
-@endforeach
+
+<div clas="content">
+    <div class="title m-b-md" style=" ">
+        Tweets
+    </div>
+
+    @foreach($tweets as $tweet)
+
+        <p>{{$tweet->text}}</p>
+
+    @endforeach
 
 </div>
+
+
 </body>
 </html>

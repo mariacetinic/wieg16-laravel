@@ -33,7 +33,10 @@ Route::resource('products', 'ProductController');
 Route::resource('groups', 'GroupController');
 Route::resource('instagram', 'InstagramPictureController');
 
-Route::get('/tweets', 'TweetsController@index');
+Route::get('/tweets', 'TweetsController@index'); //controllern skickar funktionen hit
+Route::get('/tweets/count', 'TweetsController@countWords');
+Route::get('/tweets/countwords', 'TweetsController@countAndSort');
+
 
 //Route::get('/instagram', 'InstagramController@fbShow');
 
@@ -42,3 +45,6 @@ Route::get('/klarna', 'KlarnaController@index');
 Route::get('/klarna-confirmation', 'KlarnaController@confirmation');
 
 Route::get('/klarna-acknowledge', 'KlarnaController@acknowledge');
+
+Route::get('/stripe', 'StripeController@index');
+

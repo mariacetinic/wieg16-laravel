@@ -65,7 +65,7 @@ class ImportTweets extends Command
         foreach($result['statuses'] as $tweet) {
             $this->info("Importing/update tweets with id: " . $tweet['id']);
             //
-            var_dump($tweet['text']);
+            //var_dump($tweet['text']);
             $dbTweet = Tweet::findOrNew($tweet['id']);
 
             $dbTweet->fill([
