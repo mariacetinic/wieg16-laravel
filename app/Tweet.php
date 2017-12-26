@@ -38,7 +38,29 @@ class Tweet extends Model
 
     }
 
-    
+    static public function getTweets ($token, $word) {
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api.twitter.com/1.1/search/tweets.json?q='.$word'",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                "authorization: Bearer ".$token,
+                "cache-control: no-cache",
+                "postman-token: 20e19297-fb10-b938-02cd-c07cb41b960d"
+            ),
+        ));
+        $response = json_decode(curl_exec($curl), true);
+        $clean = [];
+        foreach ($response['statuses'] as $data) {
+            $clean[] = $data['text'];
+        }
+        return $clean;
+    }
 
     static public function countAndSort ($tweets) {
 
